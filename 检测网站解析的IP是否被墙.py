@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+#
+#   GoEdge脚本【检测网站解析的IP是否被墙】
+#   https://github.com/Kuaien/Goedge-Admin-Theme
+#
+#   GoEdge模版、插件定制请联系TG: https://t.me/wanzi856
+#
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
