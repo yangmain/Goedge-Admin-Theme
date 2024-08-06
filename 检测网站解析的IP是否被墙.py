@@ -49,7 +49,7 @@ if data['code'] == 200:
             'id': cdn['id']
         })
 else:
-    print('集权ID不正确:{}'.format(data['message']))
+    print('集群ID不正确:{}'.format(data['message']))
 
 print(f'————>本次检测共：{len(site_url)}个IP')
 print('——————————————————————————')
