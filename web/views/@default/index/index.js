@@ -19,6 +19,15 @@ Tea.context(function () {
 	this.changeUsername = function () {
 
 	}
+	let color = localStorage.getItem('theme')
+	if(color){
+		color = JSON.parse(color)
+		let style = document.createElement('style');
+		style.type = 'text/css';
+		style.innerHTML = `:root{--color1: ${color.color1};--color2: ${color.color3};--color3: ${color.color1}30;--color4: ${color.color1}10;--color5: ${color.color1}20;}`
+		document.getElementsByTagName('head')[0].appendChild(style);
+	}
+	
 
 	this.changePassword = function () {
 		this.passwordMd5 = md5(this.password.trim());

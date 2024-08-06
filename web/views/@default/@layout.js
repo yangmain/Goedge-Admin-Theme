@@ -86,6 +86,7 @@ Tea.context(function () {
 		}
 		color = colors[name]
 		window.selectColor = color
+		localStorage.setItem('theme', JSON.stringify(color));
 		let style = document.createElement('style');
 		style.type = 'text/css';
 		style.innerHTML = `:root{--color1: ${color.color1};--color2: ${color.color2};--color3: ${color.color3};--color4: ${color.color4};}`

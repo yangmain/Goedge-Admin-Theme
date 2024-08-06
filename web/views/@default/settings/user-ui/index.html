@@ -77,7 +77,7 @@
                 </div>
                 <p class="comment">整个页面框架的背景颜色，留空表示使用默认的背景颜色。可点击使用：
                     <span class="color-spans">
-                        <a href="" v-for="color in themeBackgroundColors" @click.prevent="selectThemeBackgroundColor(color)" :title="'#' + color"><span class="color-span" :style="'background-color: #' + color">&nbsp;</span></a>
+                        <a href="" v-for="color in themeColors" @click.prevent="selectThemeBackgroundColor(color)" :title="'#' + color"><span class="color-span" :style="'background-color: #' + color">&nbsp;</span></a>
                     </span>
                 </p>
             </td>

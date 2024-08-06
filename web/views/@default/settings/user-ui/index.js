@@ -12,6 +12,7 @@ Tea.context(function () {
 	if (this.timeZoneLocation != null) {
 		oldTimeZoneName = this.timeZoneLocation.name
 	}
+	this.themeColors = ['6d4aff','0558fb','0693f1','059212','f900bf','fc4100','c87617']
 
 	this.$delay(function () {
 		this.$watch("timeZoneGroupCode", function (groupCode) {
