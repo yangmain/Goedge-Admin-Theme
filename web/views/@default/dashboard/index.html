@@ -65,50 +65,50 @@
 </div>
 
 <!-- 统计图表 -->
-<columns-grid v-if="!isLoading">
-    <div class="ui column">
-        <h4>集群<link-icon href="/clusters" v-if="dashboard.canGoNodes"></link-icon></h4>
-        <div class="value"><span>{{dashboard.countNodeClusters}}</span>个</div>
-    </div>
-
-    <div class="ui column">
-        <h4>边缘节点<link-icon href="/clusters" v-if="dashboard.canGoNodes"></link-icon></h4>
-        <div class="value"><span>{{dashboard.countNodes}}</span>个
-            <span style="font-size: 1em" v-if="dashboard.countOfflineNodes > 0">/ <a href="/clusters" v-if="dashboard.canGoNodes"><span class="red" style="font-size: 1em">{{dashboard.countOfflineNodes}}离线</span></a><span class="red" style="font-size: 1em" v-else>{{dashboard.countOfflineNodes}}离线</span></span>
-        </div>
-    </div>
-
-    <div class="ui column">
-        <h4>API节点<link-icon href="/settings/api" v-if="dashboard.canGoSettings"></link-icon></h4>
-        <div class="value"><span>{{dashboard.countAPINodes}}</span>个
-            <span style="font-size: 1em" v-if="dashboard.countOfflineAPINodes > 0">/ <a href="/settings/api" v-if="dashboard.canGoSettings"><span class="red" style="font-size: 1em">{{dashboard.countOfflineAPINodes}}离线</span></a><span class="red" style="font-size: 1em" v-else>{{dashboard.countOfflineAPINodes}}离线</span></span>
-        </div>
-    </div>
-
-    <div class="ui column">
-        <h4>用户<link-icon href="/users" v-if="dashboard.canGoUsers"></link-icon></h4>
-        <div class="value"><span>{{dashboard.countUsers}}</span>个</div>
-    </div>
-
-    <div class="ui column">
-        <h4>网站<link-icon href="/servers" v-if="dashboard.canGoServers"></link-icon></h4>
-        <div class="value"><span>{{dashboard.countServers}}</span>个</div>
-    </div>
-
-    <div class="ui column">
-        <h4>当天独立IP</h4>
-        <div class="value">
-            <span v-if="todayCountIPs > 0">{{todayCountIPsFormat}}</span>
-            <span v-else class="disabled">尚无数据</span>
-        </div>
-    </div>
-
-    <div class="ui column">
-        <h4>当天流量</h4>
-        <div class="value"><span>{{todayTraffic}}</span>{{todayTrafficUnit}}</div>
-    </div>
-
-</columns-grid>
+<div class="ui all-chart">
+	<div class="ui three columns grid counter-chart" v-if="!isLoading">
+		<div class="ui column">
+			<a class="ui cologe" href="/clusters" v-if="dashboard.canGoNodes"><i class="ui icon disk"></i></a>
+			<h4>集群</h4>
+			<div class="value"><span>{{dashboard.countNodeClusters}}</span>个</div>
+		</div>
+		<div class="ui column">
+			<a class="ui cologe" href="/clusters" v-if="dashboard.canGoNodes"><i class="ui icon cloud"></i></a>
+			<h4>边缘节点</h4>
+			<div class="value">
+				<span>{{dashboard.countNodes}}</span>个
+				<span style="font-size: 1em" v-if="dashboard.countOfflineNodes > 0"><span class="disabled" style="font-size: 1em">/</span> <a href="/clusters" v-if="dashboard.canGoNodes"><span class="red" style="font-size: 1em">{{dashboard.countOfflineNodes}}离线</span></a><span class="red" style="font-size: 1em" v-else>{{dashboard.countOfflineNodes}}离线</span></span>
+			</div>
+		</div>
+		<div class="ui column with-border">
+			<a class="ui cologe" href="/users" v-if="dashboard.canGoUsers"><i class="ui icon users"></i></a>
+			<h4>用户</h4>
+			<div class="value"><span>{{dashboard.countUsers}}</span>个
+				<span style="font-size: 1em" v-if="dashboard.countOfflineUserNodes > 0"><span class="disabled" style="font-size: 1em">/</span> <a href="/settings/userNodes" v-if="dashboard.canGoSettings"><span class="red" style="font-size: 1em">{{dashboard.countOfflineUserNodes}}节点离线</span></a><span class="red" style="font-size: 1em" v-else>{{dashboard.countOfflineUserNodes}}节点离线</span></span>
+			</div>
+		</div>
+		<div class="ui column" style="border-bottom: 1px rgba(0, 0, 0, 0.1) solid;">
+			<a class="ui cologe" href="/servers" v-if="dashboard.canGoServers"><i class="ui icon clone outsize"></i></a>
+			<h4>网站</h4>
+			<div class="value"><span>{{dashboard.countServers}}</span>个
+				<span style="font-size: 1em" v-if="dashboard.countAuditingServers > 0"><span class="disabled" style="font-size: 1em">/</span> <a href="/servers?auditingFlag=1" v-if="dashboard.canGoServers"><span class="red" style="font-size: 1em">{{dashboard.countAuditingServers}}审核</span></a><span class="red" style="font-size: 1em" v-else>{{dashboard.countAuditingServers}}审核</span></span>
+			</div>
+		</div>
+		<div class="ui column">
+			<a class="ui cologe"><i class="ui icon icon28"></i></a>
+			<h4>当天独立IP</h4>
+			<div class="value">
+				<span v-if="todayCountIPs > 0">{{todayCountIPsFormat}}</span>
+				<span v-else class="disabled">尚无数据</span>
+			</div>
+		</div>
+		<div class="ui column with-border">
+			<a class="ui cologe"><i class="ui icon icon29"></i></a>
+			<h4>当天流量</h4>
+			<div class="value"><span>{{todayTraffic}}</span>{{todayTrafficUnit}}</div>
+		</div>
+	</div>
+</div>
 
 <chart-columns-grid>
     <div class="ui column">
@@ -117,10 +117,8 @@
             <a href="" class="item" :class="{active: trafficTab == 'daily'}" @click.prevent="selectTrafficTab('daily')">15天流量趋势</a>
         </div>
         <div class="ui divider"></div>
-
         <!-- 按小时统计 -->
         <div class="chart-box" id="hourly-traffic-chart-box" v-show="trafficTab == 'hourly'"></div>
-
         <!-- 按日统计 -->
         <div class="chart-box" id="daily-traffic-chart-box" v-show="trafficTab == 'daily'"></div>
     </div>

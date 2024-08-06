@@ -155,13 +155,13 @@ Tea.context(function () {
 						return v.bytes / axis.divider;
 					}),
 					itemStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					lineStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					areaStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					smooth: true
 				},
@@ -172,10 +172,10 @@ Tea.context(function () {
 						return v.cachedBytes / axis.divider;
 					}),
 					itemStyle: {
-						color: "#61A0A8"
+						color: "#91cc74"
 					},
 					lineStyle: {
-						color: "#61A0A8"
+						color: "#91cc74"
 					},
 					areaStyle: {},
 					smooth: true
@@ -187,10 +187,10 @@ Tea.context(function () {
 						return v.attackBytes / axis.divider;
 					}),
 					itemStyle: {
-						color: "#F39494"
+						color: "#ee6666"
 					},
 					areaStyle: {
-						color: "#F39494"
+						color: "#ee6666"
 					},
 					smooth: true
 				}
@@ -287,10 +287,10 @@ Tea.context(function () {
 						return v.countRequests / axis.divider
 					}),
 					itemStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					areaStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					smooth: true
 				},
@@ -301,10 +301,10 @@ Tea.context(function () {
 						return v.countCachedRequests / axis.divider
 					}),
 					itemStyle: {
-						color: "#61A0A8"
+						color: "#91cc74"
 					},
 					areaStyle: {
-						color: "#61A0A8"
+						color: "#91cc74"
 					},
 					smooth: true
 				},
@@ -315,10 +315,10 @@ Tea.context(function () {
 						return v.countAttackRequests / axis.divider;
 					}),
 					itemStyle: {
-						color: "#F39494"
+						color: "#ee6666"
 					},
 					areaStyle: {
-						color: "#F39494"
+						color: "#ee6666"
 					},
 					smooth: true
 				}
@@ -341,6 +341,7 @@ Tea.context(function () {
 		teaweb.renderBarChart({
 			id: "top-nodes-chart",
 			name: "节点",
+			color: window.selectColor.color2,
 			values: this.topNodeStats,
 			x: function (v) {
 				return v.nodeName
@@ -366,6 +367,7 @@ Tea.context(function () {
 		teaweb.renderBarChart({
 			id: "top-domains-chart",
 			name: "域名",
+			color: window.selectColor.color2,
 			values: this.topDomainStats,
 			x: function (v) {
 				return v.domain
@@ -431,7 +433,7 @@ Tea.context(function () {
 			max = 1200
 		}
 
-		let color = window.selectColor.color1
+		let color = window.selectColor.color2
 		if (lastBandwidthBytes == 0) {
 			lastBandwidthBytes = this.nodeValuesStat.totalTrafficBytesPerSecond
 		}
@@ -465,7 +467,7 @@ Tea.context(function () {
 
 	this.renderCPUGauge = function () {
 		let avgCPUUsage = Math.round(this.nodeValuesStat.avgCPUUsage * 100) / 100
-		let color = window.selectColor.color1
+		let color = window.selectColor.color2
 		if (avgCPUUsage > 50) {
 			color = "red"
 		} else if (avgCPUUsage > 20) {
@@ -503,7 +505,7 @@ Tea.context(function () {
 
 	this.renderMemoryGauge = function () {
 		let avgMemoryUsage = Math.round(this.nodeValuesStat.avgMemoryUsage * 100) / 100
-		let color = window.selectColor.color1
+		let color = window.selectColor.color2
 		if (avgMemoryUsage > 80) {
 			color = "red"
 		} else if (avgMemoryUsage > 60) {
@@ -541,7 +543,7 @@ Tea.context(function () {
 
 	this.renderLoadGauge = function () {
 		let avgLoad1min = Math.round(this.nodeValuesStat.avgLoad1min * 100) / 100
-		let color = window.selectColor.color1
+		let color = window.selectColor.color2
 		if (avgLoad1min > 20) {
 			color = "red"
 		} else if (avgLoad1min > 5) {

@@ -10,6 +10,10 @@ Tea.context(function () {
 	this.$delay(function () {
 		this.$post("$")
 			.success(function (resp) {
+				var order = [6, 3, 2, 1, 5, 4];
+				resp.data.metricCharts.sort((a, b) => {
+					return order.indexOf(a.chart.id) - order.indexOf(b.chart.id);
+				});
 				for (let k in resp.data) {
 					this[k] = resp.data[k]
 				}
@@ -109,13 +113,13 @@ Tea.context(function () {
 						return v.bytes / axis.divider;
 					}),
 					itemStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					lineStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					areaStyle: {
-						color: teaweb.DefaultChartColor
+						color: window.selectColor.color2||teaweb.DefaultChartColor
 					},
 					smooth: true
 				},
@@ -126,10 +130,10 @@ Tea.context(function () {
 						return v.cachedBytes / axis.divider;
 					}),
 					itemStyle: {
-						color: "#61A0A8"
+						color: "#91cc74"
 					},
 					lineStyle: {
-						color: "#61A0A8"
+						color: "#91cc74"
 					},
 					areaStyle: {},
 					smooth: true
@@ -141,10 +145,10 @@ Tea.context(function () {
 						return v.attackBytes / axis.divider;
 					}),
 					itemStyle: {
-						color: "#F39494"
+						color: "#ee6666"
 					},
 					areaStyle: {
-						color: "#F39494"
+						color: "#ee6666"
 					},
 					smooth: true
 				}
@@ -167,6 +171,7 @@ Tea.context(function () {
 		teaweb.renderBarChart({
 			id: "top-domains-chart",
 			name: "域名",
+			color: window.selectColor.color2,
 			values: this.topDomainStats,
 			x: function (v) {
 				return v.domain

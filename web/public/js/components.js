@@ -8363,7 +8363,7 @@ Vue.component("metric-chart", {
 							return v / axis.divider
 						}),
 						itemStyle: {
-							color: teaweb.DefaultChartColor
+							color: window.selectColor.color2||teaweb.DefaultChartColor
 						},
 						areaStyle: {},
 						barWidth: "10em"
@@ -8435,7 +8435,7 @@ Vue.component("metric-chart", {
 							return v / axis.divider
 						}),
 						itemStyle: {
-							color: teaweb.DefaultChartColor
+							color: window.selectColor.color2||teaweb.DefaultChartColor
 						},
 						areaStyle: {}
 					}
@@ -8521,7 +8521,7 @@ Vue.component("metric-chart", {
 							return v / axis.divider
 						}),
 						itemStyle: {
-							color: teaweb.DefaultChartColor
+							color: window.selectColor.color2||teaweb.DefaultChartColor
 						},
 						areaStyle: {},
 						barWidth: "10em"
@@ -20327,19 +20327,19 @@ Vue.component("traffic-map-box", {
 						show: false,
 						fontSize: "10px",
 						color: "#fff",
-						backgroundColor: "#8B9BD3",
+						backgroundColor: window.selectColor.color2||"#8B9BD3",
 						padding: [2, 2, 2, 2]
 					},
 					emphasis: {
 						itemStyle: {
-							areaColor: "#8B9BD3",
+							areaColor: window.selectColor.color2||"#8B9BD3",
 							opacity: 1.0
 						},
 						label: {
 							show: true,
 							fontSize: "10px",
 							color: "#fff",
-							backgroundColor: "#8B9BD3",
+							backgroundColor: window.selectColor.color2||"#8B9BD3",
 							padding: [2, 2, 2, 2]
 						}
 					},
