@@ -14,6 +14,8 @@ Tea.context(function () {
 			todo: ""
 		}
 	})
+	
+	localStorage.setItem('servers', JSON.stringify(window.TEA.ACTION.data.servers))
 
 	this.$delay(function () {
 		if (this.checkDNS) {
