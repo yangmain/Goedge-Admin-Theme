@@ -155,13 +155,13 @@ Tea.context(function () {
 						return v.bytes / axis.divider;
 					}),
 					itemStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					lineStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					areaStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					smooth: true
 				},
@@ -287,10 +287,10 @@ Tea.context(function () {
 						return v.countRequests / axis.divider
 					}),
 					itemStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					areaStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					smooth: true
 				},
@@ -341,7 +341,7 @@ Tea.context(function () {
 		teaweb.renderBarChart({
 			id: "top-nodes-chart",
 			name: "节点",
-			color: window.selectColor.color2,
+			color: teaweb.DefaultChartColor,
 			values: this.topNodeStats,
 			x: function (v) {
 				return v.nodeName
@@ -367,7 +367,7 @@ Tea.context(function () {
 		teaweb.renderBarChart({
 			id: "top-domains-chart",
 			name: "域名",
-			color: window.selectColor.color2,
+			color: teaweb.DefaultChartColor,
 			values: this.topDomainStats,
 			x: function (v) {
 				return v.domain
@@ -433,7 +433,7 @@ Tea.context(function () {
 			max = 1200
 		}
 
-		let color = window.selectColor.color2
+		let color = teaweb.DefaultChartColor
 		if (lastBandwidthBytes == 0) {
 			lastBandwidthBytes = this.nodeValuesStat.totalTrafficBytesPerSecond
 		}
@@ -467,7 +467,7 @@ Tea.context(function () {
 
 	this.renderCPUGauge = function () {
 		let avgCPUUsage = Math.round(this.nodeValuesStat.avgCPUUsage * 100) / 100
-		let color = window.selectColor.color2
+		let color = teaweb.DefaultChartColor
 		if (avgCPUUsage > 50) {
 			color = "red"
 		} else if (avgCPUUsage > 20) {
@@ -505,7 +505,7 @@ Tea.context(function () {
 
 	this.renderMemoryGauge = function () {
 		let avgMemoryUsage = Math.round(this.nodeValuesStat.avgMemoryUsage * 100) / 100
-		let color = window.selectColor.color2
+		let color = teaweb.DefaultChartColor
 		if (avgMemoryUsage > 80) {
 			color = "red"
 		} else if (avgMemoryUsage > 60) {
@@ -543,7 +543,7 @@ Tea.context(function () {
 
 	this.renderLoadGauge = function () {
 		let avgLoad1min = Math.round(this.nodeValuesStat.avgLoad1min * 100) / 100
-		let color = window.selectColor.color2
+		let color = teaweb.DefaultChartColor
 		if (avgLoad1min > 20) {
 			color = "red"
 		} else if (avgLoad1min > 5) {

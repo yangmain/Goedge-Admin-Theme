@@ -113,13 +113,13 @@ Tea.context(function () {
 						return v.bytes / axis.divider;
 					}),
 					itemStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					lineStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					areaStyle: {
-						color: window.selectColor.color2||teaweb.DefaultChartColor
+						color: teaweb.DefaultChartColor
 					},
 					smooth: true
 				},
@@ -171,7 +171,7 @@ Tea.context(function () {
 		teaweb.renderBarChart({
 			id: "top-domains-chart",
 			name: "域名",
-			color: window.selectColor.color2,
+			color: teaweb.DefaultChartColor,
 			values: this.topDomainStats,
 			x: function (v) {
 				return v.domain

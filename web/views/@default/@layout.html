@@ -74,9 +74,9 @@
 					</a>
 					<!-- DNS同步 -->
 					<a href="" class="item" v-if="teaCheckDNSTasks && doingDNSTasks.isUpdated" @click.prevent="showDNSTasks()">
-					    <span v-if="!doingDNSTasks.isDoing && !doingDNSTasks.hasError" class="hover-span"><i class="icon globe disabled"></i><span class="disabled">已同步DNS</span></span>
-					    <span v-if="doingDNSTasks.isDoing && !doingDNSTasks.hasError" class="hover-span rotate"><i class="icon globe"></i><span>正在同步DNS...</span></span>
-					    <span v-if="doingDNSTasks.hasError" class="red"><i class="icon globe"></i>DNS同步失败</span>
+					    <span v-if="!doingDNSTasks.isDoing && !doingDNSTasks.hasError" class="hover-span"><i class="icon globe2 disabled"></i><span class="disabled">已同步DNS</span></span>
+					    <span v-if="doingDNSTasks.isDoing && !doingDNSTasks.hasError" class="hover-span rotate"><i class="icon globe2"></i><span>正在同步DNS...</span></span>
+					    <span v-if="doingDNSTasks.hasError" class="red"><i class="icon globe2"></i>DNS同步失败</span>
 					</a>
 					<!-- 消息 -->
 					<a href="" class="item" :class="{active:teaMenu == 'message'}" @click.prevent="showMessages()">

@@ -5,31 +5,35 @@
 <script type="text/javascript" src="/js/echarts/echarts.min.js"></script>
 <script type="text/javascript" src="/js/world.js"></script>
 <script type="text/javascript" src="/js/world-countries-map.js"></script>
+<style type="text/css">.ui.all-chart .counter-chart .ui.column:nth-child(-n+4){border-bottom:1px rgba(0,0,0,0.1) solid !important}</style>
 {$end}
 
 {$template "menu"}
 
-<columns-grid>
-    <div class="ui column">
-        <h4>今日拦截</h4>
-        <div class="value"><span>{{board.countDailyBlocks}}</span>次</div>
-    </div>
-
-    <div class="ui column">
-        <h4>今日验证码验证</h4>
-        <div class="value"><span>{{board.countDailyCaptcha}}</span>次</div>
-    </div>
-
-    <div class="ui column">
-        <h4>今日记录</h4>
-        <div class="value"><span>{{board.countDailyLogs}}</span>次</div>
-    </div>
-
-    <div class="ui column">
-        <h4>本周拦截</h4>
-        <div class="value"><span>{{board.countWeeklyBlocks}}</span>次</div>
-    </div>
-</columns-grid>
+<div class="ui all-chart">
+	<div class="ui four columns grid counter-chart">
+		<div class="ui column" style="1px rgba(0, 0, 0, 0.1) solid">
+			<a class="ui cologe"><i class="ui icon icon25"></i></a>
+			<h4>今日拦截</h4>
+			<div class="value"><span>{{board.countDailyBlocks}}</span>次</div>
+		</div>
+		<div class="ui column">
+			<a class="ui cologe"><i class="ui icon icon26"></i></a>
+			<h4>今日验证码验证</h4>
+			<div class="value"><span>{{board.countDailyCaptcha}}</span>次</div>
+		</div>
+		<div class="ui column">
+			<a class="ui cologe"><i class="ui icon icon32"></i></a>
+			<h4>今日记录</h4>
+			<div class="value"><span>{{board.countDailyLogs}}</span>次</div>
+		</div>
+		<div class="ui column">
+			<a class="ui cologe"><i class="ui icon history"></i></a>
+			<h4>本周拦截</h4>
+			<div class="value"><span>{{board.countWeeklyBlocks}}</span>次</div>
+		</div>
+	</div>
+</div>
 
 <chart-columns-grid>
     <div class="ui column">

@@ -85,7 +85,7 @@ Tea.context(function () {
 			},
 		}
 		color = colors[name]
-		window.selectColor = color
+		teaweb.DefaultChartColor = color.color2
 		localStorage.setItem('theme', JSON.stringify(color));
 		let style = document.createElement('style');
 		style.type = 'text/css';
